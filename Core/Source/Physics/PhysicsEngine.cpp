@@ -7,7 +7,6 @@
 PhysicsEngine::PhysicsEngine() {
 }
 
-
 PhysicsEngine* PhysicsEngine::GetInstance() {
     if (m_Instance == nullptr) {
         m_Instance = new PhysicsEngine();
@@ -62,7 +61,8 @@ void PhysicsEngine::Simulate() {
                 Collider* collider1 = static_cast<Collider*>(m_Objs[i]);
                 Collider* collider2 = static_cast<Collider*>(m_Objs[j]);
 
-                Collider::ResolveCollision(*collider1, *collider2, 1);
+                collider1->ResolveCollision(*collider1, *collider2, 1);
+                collider2->ResolveCollision(*collider1, *collider2, 1);
         }
     }
     UpdateObjects();
@@ -73,3 +73,5 @@ void PhysicsEngine::SetGravity(f32 a, f32 b) {
     m_Gravity.SetY(b);
 }
 
+
+PhysicsEngine* PhysicsEngine::m_Instance = nullptr;

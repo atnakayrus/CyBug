@@ -120,19 +120,7 @@ void Vector<T>::PushBack(T&& theElement)
     m_Data[++m_Size] = std::move(theElement);
 }
 
-template<class T>
-template<typename ...Args>
-inline T& Vector<T>::EmplaceBack(Args && ...args)
-{
-    if (m_Size >= m_BufferSize)
-    {
-        if (m_BufferSize == 0)
-            m_BufferSize = 2;
-        IncreaseBuffer(m_BufferSize + (m_BufferSize >> 1));
-    }
-    new(&m_Data[m_Size]) T(std::forward<Args>(args)...);
-    return m_Data[m_Size++];
-}
+
 
 template<class T>
 void Vector<T>::Pop()
@@ -205,7 +193,7 @@ Vector<T>& Vector<T>::operator=(Vector&& theVector)
 {
     if (this != &theVector)
     {
-        #error C2352 operatoer=: a call of a non-static member function requires an object 
+        // #error C2352 operatoer=: a call of a non-static member function requires an object 
         m_Data = theVector.m_Data;
         theVector.m_Data = nullptr;
         m_Size = theVector.m_Size;

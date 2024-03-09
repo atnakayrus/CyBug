@@ -106,3 +106,18 @@ inline T Matrix<T>::At(size_t theX, size_t theY) const
 }
 
 }
+
+template class Cybug::Matrix<i8 >;
+template class Cybug::Matrix<i16>;
+template class Cybug::Matrix<i32>;
+template class Cybug::Matrix<i64>;
+template class Cybug::Matrix<u8 >;
+template class Cybug::Matrix<u16>;
+template class Cybug::Matrix<u32>;
+template class Cybug::Matrix<u64>;
+template class Cybug::Matrix<f32>;
+template class Cybug::Matrix<f64>;
+template class Cybug::Matrix<bool>;
+template class Cybug::Matrix<char>;
+// template class Cybug::Matrix<Vec2>;
+// template class Cybug::Matrix<PhysicsObject*>;

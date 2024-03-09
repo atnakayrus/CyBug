@@ -9,6 +9,7 @@ class PhysicsEngine {
         Vec2 m_Gravity;
         Vector<PhysicsObject*> m_Objs;
         PhysicsEngine();
+        static PhysicsEngine* m_Instance;
 
     public:
         /**
@@ -59,9 +60,6 @@ class PhysicsEngine {
          */
         void Simulate();
 
-    private:
-        static PhysicsEngine* m_Instance;
 };
 
 
-PhysicsEngine* PhysicsEngine::m_Instance = nullptr;
